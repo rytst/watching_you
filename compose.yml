@@ -1,0 +1,41 @@
+networks:
+  monitoring:
+
+services:
+  influxdb:
+    image: influxdb
+    ports:
+      - 8086:8086
+    networks:
+      - monitoring
+    restart: always
+    volumes:
+      - influxdb-data:/var/lib/influxdb
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUX_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUX_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUX_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUX_BUCKET}
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    depends_on:
+      - influxdb
+    networks:
+      - monitoring
+    restart: always
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+    environment:
+      - GF_DEFAULT_INSTANCE_NAME=${GF_INSTANCE_NAME}
+      - GF_SECURITY_ADMIN_USER=${GF_USERNAME}
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_PASSWORD}
+
+
+volumes:
+  influxdb-data:
+  grafana-data:
