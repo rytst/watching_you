@@ -2,11 +2,20 @@
 
 
 ### How to start
+1. Clone the repository
+
+```
+git clone git@github.com:rytst/watching_you.git
+```
+
+2. Start the containers
+
 ```
 docker compose up -d
 ```
 
 ### How to stop
+
 ```
 docker compose down
 ```
