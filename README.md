@@ -18,6 +18,9 @@ docker compose up -d
 ```
 
 4. Execute the following command
+```
+python main.py
+```
 
 ### How to stop
 
