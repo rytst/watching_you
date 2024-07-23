@@ -17,6 +17,8 @@ git clone git@github.com:rytst/watching_you.git
 docker compose up -d
 ```
 
+4. Execute the following command
+
 ### How to stop
 
 ```

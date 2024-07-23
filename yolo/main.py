@@ -49,7 +49,7 @@ def main():
             .field("field1", num_of_person)
         )
         write_api.write(bucket=bucket, org=org, record=point)
-        time.sleep(30) # separate points by 1 second
+        time.sleep(15) # separate points by 1 second
     
 
 
