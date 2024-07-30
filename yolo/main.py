@@ -9,7 +9,7 @@ from dotenv import load_dotenv, dotenv_values
 
 # import count_person function
 from yolo import count_person
-from line import send
+from line import send_line
 
 
 
@@ -24,7 +24,7 @@ def main():
     
 
     # get env variables
-    token = os.getenv('INFLUX_TOKEN')
+    influx_token = os.getenv('INFLUX_TOKEN')
     org = os.getenv('INFLUX_ORG')
 
     # get URL form .env
@@ -36,13 +36,12 @@ def main():
 
 
 
-    
     # `line notify` token
-    token = os.getenv('LINE_NOTIFY')
+    line_token = os.getenv('LINE_TOKEN')
  
  
 
-    client = influxdb_client.InfluxDBClient(url=influx_url, token=token, org=org)
+    client = influxdb_client.InfluxDBClient(url=influx_url, token=influx_token, org=org)
     
     bucket="WATCHING_YOU"
     
@@ -57,7 +56,7 @@ def main():
 
 
         # send notification
-        send(token, msg)
+        send_line(line_token, msg)
 
 
         point = (
