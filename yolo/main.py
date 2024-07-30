@@ -40,8 +40,6 @@ def main():
     # `line notify` token
     token = os.getenv('LINE_NOTIFY')
  
-    # message
-    msg = 'Number of Persons: ' + str(num_of_person)
  
 
     client = influxdb_client.InfluxDBClient(url=influx_url, token=token, org=org)
@@ -54,6 +52,8 @@ def main():
         urllib.request.urlretrieve(camera_url, save_as)
         num_of_person = count_person(save_as)
 
+        # create message
+        msg = 'Number of Persons: ' + str(num_of_person)
 
 
         # send notification
