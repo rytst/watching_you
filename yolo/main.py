@@ -9,6 +9,7 @@ from dotenv import load_dotenv, dotenv_values
 
 # import count_person function
 from yolo import count_person
+from line import send
 
 
 
@@ -43,6 +44,18 @@ def main():
     while True:
         urllib.request.urlretrieve(camera_url, save_as)
         num_of_person = count_person(save_as)
+
+
+        # `line notify` token
+        token = 
+
+        # message
+        msg = 'Number of Persons: ' + str(num_of_person)
+
+        # send notification
+        send(token, msg)
+
+
         point = (
             Point("Persons")
             .tag("tagname1", "tagvalue1")
