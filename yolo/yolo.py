@@ -10,7 +10,7 @@ def count_person(image):
 
     
     # prediction
-    result = model(image)
+    result = model(image, show=True)
     
     
     boxes = result[0].boxes  # Boxes object for bounding box outputs
